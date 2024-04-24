@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rentals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .height-inputs {
+            display: flex;
+            gap: 10px; 
+        }
+        .height-inputs input {
+            flex-grow: 1; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form method="POST">
+            <div class="checkbox-group">
+                <label><input type="checkbox" id="ski_boots" name="ski_boots" {% if equipment and equipment.ski_boots %}checked{% endif %}> Ski Boots</label>
+                <label><input type="checkbox" id="skis" name="skis" {% if equipment and equipment.skis %}checked{% endif %}> Skis</label>
+                <label><input type="checkbox" id="snowboard_boots" name="snowboard_boots" {% if equipment and equipment.snowboard_boots %}checked{% endif %}> Snowboard Boots</label>
+                <label><input type="checkbox" id="snowboard" name="snowboard" {% if equipment and equipment.snowboard %}checked{% endif %}> Snowboard</label>
+                <label><input type="checkbox" id="gloves" name="gloves" {% if equipment and equipment.gloves %}checked{% endif %}> Gloves</label>
+                <label><input type="checkbox" id="helmet" name="helmet" {% if equipment and equipment.helmet %}checked{% endif %}> Helmet</label>
+                <label><input type="checkbox" id="bibs" name="bibs" {% if equipment and equipment.bibs %}checked{% endif %}> Bibs</label>
+                <label><input type="checkbox" id="jacket" name="jacket" {% if equipment and equipment.jacket %}checked{% endif %}> Jacket</label>
+                <label><input type="checkbox" id="goggles" name="goggles" {% if equipment and equipment.goggles %}checked{% endif %}> Goggles</label>
+
+            </div>
+            <label for="shoe_size">Shoe Size:</label>
+            <input required type="number" id="shoe_size" name="shoe_size" value="{{ equipment.shoe_size if equipment else '' }}">
+            <label for="weight">Weight:</label>
+            <input required type="number" id="weight" name="weight" value="{{ equipment.weight if equipment else '' }}">
+            <label for="height_feet">Height:</label>
+            <div style="display: flex;">
+                <input required type="number" id="height_feet" name="height_feet" value="{{ equipment.height // 12 if equipment else '' }}" style="margin-right: 10px;">Feet
+                <input required type="number" id="height_inches" name="height_inches" value="{{ equipment.height % 12 if equipment else '' }}">Inches
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

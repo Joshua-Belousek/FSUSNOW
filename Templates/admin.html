@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .admin-links {
+            list-style-type: none;
+            padding: 0;
+        }
+        .admin-links li {
+            margin-bottom: 10px;
+        }
+        .admin-links a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .admin-links a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Page</h1>
+        <ul class="admin-links">
+            <li><a href="/add_trip">Add Trip</a></li>
+            <li><a href="/add_housing">Add Housing</a></li>
+            <li><a href="/admin/trips">Trip details</a></li>
+        </ul>
+    </div>
+</body>
+</html>

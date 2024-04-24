@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trips Summary</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 40px;
+            color: #333;
+        }
+        h1, h2 {
+            color: #44546a;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            margin-top: 8px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        p {
+            margin: 4px 0;
+        }
+        .summary {
+            background-color: #e2e2e2;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Trips Overview</h1>
+    <div class="summary">
+        <p>Total days: {{ max_days }}</p>
+        <p>Total Price of All Trips: {{ total_price }}</p>
+    </div>
+
+    <h2>Trip Details</h2>
+    <ul>
+        {% for trip in trips %}
+        <li>
+            <h3>{{ trip.name }}</h3>
+            <p>Start Date: {{ trip.start_date }}</p>
+            <p>End Date: {{ trip.end_date }}</p>
+            <p>Number of Days: {{ trip.num_days }}</p>
+            <p>Price: {{ trip.price }}</p>
+            <p>Housing Option: {{ trip.housing }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

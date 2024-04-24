@@ -1,0 +1,27 @@
+<head>
+    <title>Trip Details</title>
+</head>
+
+<body>
+    <h1>{{ trip.name }}</h1>
+    <p>Start Date: {{ trip.start_date }}</p>
+    <p>End Date: {{ trip.end_date }}</p>
+    <p>Location: {{ trip.location }}</p>
+
+    <h2>Signups</h2>
+    {% for signup in signups %}
+    <p>Name: {{ signup.name }}</p>
+    <p>Housing: {{ signup.housing.Name }}</p>
+    {% endfor %}
+
+    <h2>Equipment Needed</h2>
+    <p>Ski Boots: {{ equipment_totals.total_ski_boots }}</p>
+    <p>Skis: {{ equipment_totals.total_skis }}</p>
+    <p>Snowboard Boots: {{ equipment_totals.total_snowboard_boots }}</p>
+    <p>Snowboard: {{ equipment_totals.total_snowboard }}</p>
+    <p>Gloves: {{ equipment_totals.total_gloves }}</p>
+    <p>Helmet: {{ equipment_totals.total_helmet }}</p>
+    <p>Bibs: {{ equipment_totals.total_bibs }}</p>
+    <p>Jacket: {{ equipment_totals.total_jacket }}</p>
+    <p>Goggles: {{ equipment_totals.total_goggles }}</p>
+</body>

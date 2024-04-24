@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST" action="/signup">
+        <label for="first_name">First Name:</label><br>
+        <input type="text" id="first_name" name="first_name" required><br>
+        <label for="last_name">Last Name:</label><br>
+        <input type="text" id="last_name" name="last_name" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br>
+        <input type="submit" value="Signup">
+    </form>
+</body>
+</html>

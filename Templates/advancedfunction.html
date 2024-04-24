@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheapest Ski Trip Finder</title>
+    <script>
+        function addBlackoutPeriod() {
+            const container = document.getElementById('blackout-periods-container');
+
+            // Create a div to group the start and end dates for a blackout period
+            const periodDiv = document.createElement('div');
+
+            // Create and append the start date input
+            const startDate = document.createElement('input');
+            startDate.setAttribute('type', 'date');
+            startDate.setAttribute('name', 'blackout_start_dates[]');
+            periodDiv.appendChild(document.createTextNode('Start Date: '));
+            periodDiv.appendChild(startDate);
+
+            // Create and append the end date input
+            const endDate = document.createElement('input');
+            endDate.setAttribute('type', 'date');
+            endDate.setAttribute('name', 'blackout_end_dates[]');
+            periodDiv.appendChild(document.createTextNode(' End Date: '));
+            periodDiv.appendChild(endDate);
+
+
+            container.appendChild(periodDiv);
+            container.appendChild(document.createElement('br'));
+        }
+    </script>
+</head>
+<body>
+    <h1>Cheapest Ski Trip Finder</h1>
+    <p>Find the best ski/snowboard trips within your budget!</p>
+    <form action="/advresults" method="post">
+        <label for="min_days">Minimum Skiing Days:</label>
+        <input required type="number" id="min_days" name="min_days" min="1"><br><br>
+        <label for="max_days">Max Skiing Days:</label>
+        <input required type="number" id="max_days" name="max_days" min="1"><br><br>
+
+        <div id="blackout-periods-container">
+            <label>Blackout Periods:</label><br>
+            <div>
+            </div>
+        </div>
+        <button type="button" onclick="addBlackoutPeriod()">Add Another Blackout Period</button><br><br>
+
+        <label for="budget">Budget:</label>
+        <input required type="number" id="budget" name="budget" min="0"><br><br>
+
+        <input type="submit" value="Find Trips">
+    </form>
+</body>
+</html>

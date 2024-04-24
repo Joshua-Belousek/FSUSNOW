@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add Housing</title>
+</head>
+
+<body>
+    <form method="POST">
+        <label for="tripId">Trip:</label><br>
+        <select id="tripId" name="tripId">
+            {% for trip in trips %}
+            <option value="{{ trip[0] }}">{{ trip[1] }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="streetAddress">Street Address:</label><br>
+        <input type="text" id="streetAddress" name="streetAddress"><br>
+        <label for="town">Town:</label><br>
+        <input type="text" id="town" name="town"><br>
+        <label for="state">State:</label><br>
+        <input type="text" id="state" name="state"><br>
+        <label for="zipCode">Zip Code:</label><br>
+        <input type="text" id="zipCode" name="zipCode"><br>
+        <label for="price">Price:</label><br>
+        <input type="number" id="price" name="price"><br>
+        <label for="capacity">Capacity:</label><br>
+        <input type="number" id="capacity" name="capacity"><br>
+        <label for="Name">Name:</label><br>
+        <input type="text" id="Name" name="Name"><br>
+        <input type="submit" value="Add Housing">
+    </form>
+</body>
+
+</html>

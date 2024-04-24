@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin - Trips</title>
+</head>
+
+<body>
+    <h1>Trips</h1>
+    {% for trip in trips %}
+    <p><a href="{{ url_for('admin_trip_details', tripId=trip.id) }}">{{ trip.name }}</a></p>
+    {% endfor %}
+</body>
+
+</html>

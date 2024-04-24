@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trip Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .unsubscribe-btn {
+            display: block;
+            width: 200px; /* Button width */
+            margin: 20px auto; /* Center the button */
+            padding: 10px; /* Button padding */
+            font-size: 16px; /* Font size */
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ trip.name }}</h1>
+        <p><strong>Start Date:</strong> {{ trip.start_date }}</p>
+        <p><strong>End Date:</strong> {{ trip.end_date }}</p>
+        <p><strong>Location:</strong> {{ trip.location }}</p>
+
+        <h2>Housing Options</h2>
+        {% for house in trip.housing %}
+            <p><strong>Name:</strong> {{ house.Name }}</p>
+            <p><strong>Address:</strong> {{ house.street_address }}, {{ house.town }}, {{ house.state }}, {{ house.zip_code }}</p>
+            <p><strong>Price:</strong> {{ house.price }}</p>
+            <p><strong>Capacity:</strong> {{ house.capacity }}</p>
+        {% endfor %}
+    </div>
+    {% if is_signed_up %}
+            <form action="{{ url_for('unsignuptrip') }}" method="post">
+                <input type="hidden" name="trip_id" value="{{ trip.id }}">
+                <input type="submit" value="Unsubscribe" class="unsubscribe-btn">
+            </form>
+    {% else %}
+    <h2>Sign Up for a Housing Option</h2>
+    <form action="{{ url_for('signuptrip') }}" method="post">
+        <input type="hidden" name="trip_id" value="{{ trip.id }}">
+        <label for="housing">Choose a housing option:</label>
+        <select name="housing_id" id="housing">
+            {% for house in trip.housing %}
+                {% if house.capacity > 0 %}
+                    <option value="{{ house.id }}">{{ house.Name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit" value="Sign Up">
+    </form>
+    {% endif %}
+</body>
+</html>
